@@ -60,7 +60,7 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
-    tag: '111v1$(Release.ReleaseName)'
+    tag: 'NyastV1$(Release.ReleaseName)'
     assets:
       $(Build.ArtifactStagingDirectory)/*.exe
       $(Build.ArtifactStagingDirectory)/README.txt
