@@ -82,5 +82,8 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
     tag: 'v1$(Release.ReleaseName)'
+    assets: |
+      $(Build.ArtifactStagingDirectory)/*.exe
+      $(Build.ArtifactStagingDirectory)/README.txt
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
