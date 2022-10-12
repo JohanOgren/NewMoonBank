@@ -50,9 +50,10 @@ steps:
   inputs:
     gitHubConnection: 'JohanOgren'
     repositoryName: 'JohanOgren/NewMoonBank'
-    action: create
-    tagSource: userSpecifiedTag
-    tag: .v1$(Release.ReleaseName)
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'userSpecifiedTag'
+    tag: .v11$(Release.ReleaseName)
     assets: |
       $(Build.ArtifactStagingDirectory)/*.exe
       $(Build.ArtifactStagingDirectory)/README.txt
