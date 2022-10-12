@@ -36,9 +36,11 @@ namespace MoonBank
 
         public void Run()
         {
+            Customers = bankIO.LoadData("data.txt");
             if (Login())
                 Menu();
-            
+            bankIO.SaveData("data.txt", Customers);
+
         }
 
         private bool Login()
@@ -99,16 +101,15 @@ namespace MoonBank
         {
             Console.Clear();
             int choice;
-            while(true)
+            Console.WriteLine(LoggedInUser.Name + " är nu inloggad");
+            while (true)
             {
-                Console.WriteLine(LoggedInUser.Name + " är nu inloggad");
-
                 Console.WriteLine("1. Se konton");
                 Console.WriteLine("2. Sätta in pengar.");
                 Console.WriteLine("3. Ta ut pengar.");
                 Console.WriteLine("4. Överföra pengar.");
-                Console.WriteLine("5. Logga ut");
-                Console.WriteLine("6. Öppna upp nytt sparkonto");
+                Console.WriteLine("5. Öppna upp nytt sparkonto");
+                Console.WriteLine("6. Logga ut");
 
                 choice = int.Parse(Console.ReadLine());
 
@@ -125,11 +126,11 @@ namespace MoonBank
                     TransferAmount();
 
                 else if (choice == 5)
-                    return;
+                    CreateNewBankAccount(LoggedInUser);
 
                 else if (choice == 6)
-                    CreateNewBankAccount(LoggedInUser);
-                 
+                    return;
+
 
             }
         }
@@ -191,6 +192,7 @@ namespace MoonBank
             BankAccount newBankAccount = new() { Name = "SparkKonto", Balance = y };
             newUser.Accounts.Add(newBankAccount);
             Customers.Add(newUser);
+            Console.Clear();
        }
        
         private void TransferAmount()
@@ -262,14 +264,14 @@ namespace MoonBank
                     Console.WriteLine("Hur mycket pengar vill du överföra?");
                     sum = decimal.Parse(Console.ReadLine());
 
-                    if (sum <= LoggedInUser.Accounts[choice].Balance)
+                    if (sum <= LoggedInUser.Accounts[choice].Balance && sum > 0)
                     {
                         Console.WriteLine("Du har valt att överföra " + sum + " " + "kr");
                         keepLooping3 = false;
                     }
                     else
                     {
-                        Console.WriteLine("Du har angett värde som är högre än saldot.\n");
+                        Console.WriteLine("Du har angett värde som är högre än saldot eller angivit värdet 0.\n");
                     }
 
 
@@ -290,6 +292,11 @@ namespace MoonBank
             Console.WriteLine("Saldot på " + LoggedInUser.Accounts[choice].Name + " " + newBalanceFromAccount);
             Console.WriteLine("Saldot på " + LoggedInUser.Accounts[choice2].Name + " " + newBalanceToAccount);
 
+            string fromAccount = LoggedInUser.Accounts[choice].Name;
+            string toAccount = LoggedInUser.Accounts[choice2].Name;
+            
+            MakeTransferLog(sum, fromAccount, toAccount);           
+
             Console.WriteLine();
 
             LoggedInUser.Accounts[choice].Balance = newBalanceFromAccount;
@@ -307,5 +314,21 @@ namespace MoonBank
                 Customers.Add(newUser);
             }
         }
+        private void MakeTransferLog(decimal sum, string fromAccount, string toAccount)
+        {
+            string log = "Överföring av " + sum + "kr från " + fromAccount + " till " + toAccount + " genomfördes " + DateTime.Now;
+            LoggedInUser.Transfers.Add(log);
+        }
+
+        public void ShowTransferLog()
+        {
+            Console.WriteLine("Logg för överföringar mellan konton:\n");
+
+            foreach (string item in LoggedInUser.Transfers)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
     }
 }

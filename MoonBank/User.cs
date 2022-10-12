@@ -16,6 +16,8 @@ namespace MoonBank
 
         public List<BankAccount> Accounts = new List<BankAccount>();
 
+        public List<string> Transfers = new List<string>();
+
 
     }
 }

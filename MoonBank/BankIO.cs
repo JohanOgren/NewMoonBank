@@ -14,6 +14,8 @@ namespace MoonBank
             StreamReader sr = new StreamReader(filepath);
             string data = sr.ReadToEnd();
 
+            sr.Close();
+
             return data;
         }
 
@@ -75,6 +77,7 @@ namespace MoonBank
                 users.Add(user);
             }
 
+            
             return users;
         }
 

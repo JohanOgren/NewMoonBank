@@ -80,11 +80,11 @@ namespace MoonBankTest
             StreamReader sw = new StreamReader("savingTest" + filepath + ".txt");
             string data = sw.ReadToEnd();
 
-            Assert.AreEqual(    "0;Adam;Sparkonto;1000;\r\n" +
-                                "1;Bertil;Sparkonto1;2000;\r\n" +
-                                "2;Ceasar;Sparkonto2;3000;\r\n" +
-                                "3;David;Sparkonto3;3000;\r\n" +
-                                "4;Erik;Sparkonto4;3000;\r\n", data);
+            Assert.AreEqual("0;Adam;Sparkonto;1000;\r\n"    +
+                            "1;Bertil;Sparkonto1;2000;\r\n" +
+                            "2;Ceasar;Sparkonto2;3000;\r\n" +
+                            "3;David;Sparkonto3;3000;\r\n"  +
+                            "4;Erik;Sparkonto4;3000;\r\n",  data);
         }
 
 

@@ -22,16 +22,16 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-#- task: VSTest@2
-#  inputs:
-#    testSelector: 'testAssemblies'
-#    testAssemblyVer2: |
-#      **\bin\$(BuildConfiguration)\**\*MoonBankTest*.dll
-#      !**\obj\**
-#      !**\ref\**
-#    searchFolder: '$(System.DefaultWorkingDirectory)'
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\bin\$(BuildConfiguration)\**\*MoonBankTest*.dll
+      !**\obj\**
+      !**\ref\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: Publish
@@ -46,18 +46,20 @@ steps:
   inputs:
       TargetPath: '$(Build.ArtifactStagingDirectory)'
       artifact: ArtifactForMoonBank
+
+
 - task: GitHubRelease@1
   inputs:
-    gitHubConnection: 'github.com_AxelssonOscar'
-    repositoryName: 'AxelssonOscar/Moon-Bank'
-    action: create
-    tagSource: userSpecifiedTag
-    tag: v1$(Release.ReleaseName)
-    assets: |
+    gitHubConnection: 'AxelssonOscar'
+    repositoryName: 'AxelssonOscar/TestMoonBank'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'userSpecifiedTag'
+    tag: 'v1$(Release.ReleaseName)'
+    assets:
       $(Build.ArtifactStagingDirectory)/*.exe
       $(Build.ArtifactStagingDirectory)/README.txt
-    changeLogCompareToRelease: lastFullRelease
-    changeLogType: commitBased
+
 
 #- task: ArchiveFiles@2
 #  inputs:
