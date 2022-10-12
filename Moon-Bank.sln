@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoonBank", "MoonBank\MoonBank.csproj", "{D546442E-526F-465C-BFCA-F2A61FD40E56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonBankTest", "MoonBankTest\MoonBankTest.csproj", "{47390D8F-2813-4471-9B2B-7C7DDC1AB33B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D546442E-526F-465C-BFCA-F2A61FD40E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D546442E-526F-465C-BFCA-F2A61FD40E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D546442E-526F-465C-BFCA-F2A61FD40E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D546442E-526F-465C-BFCA-F2A61FD40E56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47390D8F-2813-4471-9B2B-7C7DDC1AB33B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47390D8F-2813-4471-9B2B-7C7DDC1AB33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47390D8F-2813-4471-9B2B-7C7DDC1AB33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47390D8F-2813-4471-9B2B-7C7DDC1AB33B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8E61FA2-95E8-4F6B-AB54-74B98B0072FA}
+	EndGlobalSection
+EndGlobal
