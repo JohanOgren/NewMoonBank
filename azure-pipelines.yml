@@ -48,11 +48,11 @@ steps:
       artifact: ArtifactForMoonBank
 - task: GitHubRelease@1
   inputs:
-    gitHubConnection: 'github.com_AxelssonOscar'
-    repositoryName: 'AxelssonOscar/Moon-Bank'
+    gitHubConnection: 'JohanOgren'
+    repositoryName: 'JohanOgren/NewMoonBank'
     action: create
     tagSource: userSpecifiedTag
-    tag: v1$(Release.ReleaseName)
+    tag: .v1$(Release.ReleaseName)
     assets: |
       $(Build.ArtifactStagingDirectory)/*.exe
       $(Build.ArtifactStagingDirectory)/README.txt
